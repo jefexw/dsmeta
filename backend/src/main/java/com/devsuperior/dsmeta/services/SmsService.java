@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import static java.lang.String.*;
+
 @Service
 public class SmsService {
 
@@ -32,7 +34,7 @@ public class SmsService {
 
         String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 
-        String msg = "Vendedor: " + sale.getSellerName() + " foi destaque em: " + date + " com um total de: R$" + String.format("%.2f", sale.getAmount());
+        String msg = "Vendedor: " + sale.getSellerName() + " foi destaque em: " + date + " com um total de: R$" + format("%.2f", sale.getAmount());
         Twilio.init(twilioSid, twilioKey);
 
         PhoneNumber to = new PhoneNumber(twilioPhoneTo);
